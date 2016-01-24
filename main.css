@@ -17,13 +17,32 @@ h1 {
 
 .img-logo {
   float: left;
+  margin-top: 15px;
+  /*border: 1px solid grey;*/
 }
 .lozung {
   float: left;
+  margin-top: 10px;
+  margin-left: 120px;
+  /*border: 1px solid grey;*/
 }
 .class-search {
+float: right;
+margin-top: 20px;
+margin-right: 10px;
+/*border: 1px solid grey;*/
+}
+
+/*input[type=text] {
+  border-radius: 3px;
 
 }
+
+input[type=button] {
+    cursor:pointer;
+      border-radius: 3px;
+}*/
+
 
 #header {
 height: 100px;
