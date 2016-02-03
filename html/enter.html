@@ -24,7 +24,7 @@
       <form class="up-search" action="#" method="post">
         <input type="text" name="search" placeholder="Поиск">
         <input type="button" name="go" value="Поиск">
-        <p><a href="#">Вход</a>/<a href="#">Регистрация</a></p>
+        <p id="enter-user"><a href="#">Вход</a>/<a href="#">Регистрация</a></p>
       </form>
     </div>
   </div>
@@ -71,25 +71,35 @@ $('#button-enter-id').click(function(){
   var user = localStorage.getItem('user');
   var pass = localStorage.getItem('pass');
 
-  if ((user != null) && pass != null) {
+  if ((user != '') && pass != '') {
 $.post('../php/checkLogin.php', {
   user: user,
   pass: pass
 }, function(data) {
-if (data = "true") {
-alert ('PHP PHP');
+if (data == "true") {
+alert (data);
 } else {
   localStorage.removeItem("user");
   localStorage.removeItem("pass");
   window.location.reload();
-  //alert('TRUE!!!!!');
+  alert('Не верный Логин или Пароль!');
 }});
-alert ('TRUEE!!!');
   }
   else {
-alert ('Fuck!');
+alert ('Заполните Логин и Пароль!');
   }
 });
+
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  var user = localStorage.getItem('user');
+    if (user) {
+      $('#enter-user').html(user);
+      alert ('Hello!');
+    }
+  });
 
 </script>
 
