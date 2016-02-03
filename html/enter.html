@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anrex, мебель Брест, корпусная мебель.</title>
+  <link rel="stylesheet" type="text/css" href="../main.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="js/slider.js" charset="utf-8"></script>
+
+</head>
+<body>
+<div id="wrapper">
+<header>
+ <div id="up-head"></div>
+ <div id="header">
+  <div class="up-logo">
+    <div class="img-logo">
+      <img src="../img/logo/logo.jpg" alt="logo">
+    </div>
+    <div class="lozung">
+      <h1>МЕБЕЛЬ ВЫГОДНО!</h1>
+    </div>
+    <div class="class-search">
+      <form class="up-search" action="#" method="post">
+        <input type="text" name="search" placeholder="Поиск">
+        <input type="button" name="go" value="Поиск">
+        <p><a href="#">Вход</a>/<a href="#">Регистрация</a></p>
+      </form>
+    </div>
+  </div>
+ </div>
+</header>
+<div id="sidebar">
+ <div id="horizontal-menu">
+  <ul>
+    <li class="left-point-menu"><a href="#">Point1</a></li>
+    <li class="left-point-menu"><a href="#">Point2</a></li>
+    <li class="left-point-menu"><a href="#">Point3</a></li>
+    <li class="left-point-menu"><a href="#">Point4</a></li>
+    <li class="left-point-menu"><a href="#">Point5</a></li>
+    <li class="left-point-menu"><a href="#">Point6</a></li>
+    <li class="left-point-menu"><a href="#">Point7</a></li>
+    <li class="left-point-menu"><a href="#">Point8</a></li>
+    <li class="left-point-menu"><a href="#">Point9</a></li>
+    <li class="left-point-menu"><a href="#">Point10</a></li>
+  </ul>
+ </div>
+
+</div>
+
+
+<h1>ANREX</h1>
+<div id="enter">
+  <!-- <form class="enter-form-class" name="enter-form" action="../php/checkLogin.php" method="get" > -->
+    <input type="text" id="user" placeholder="Логин"> <br>
+    <input type="password" id="pass" placeholder="Пароль"> <br>
+    <button type="button" id="button-enter-id" name="button-enter">Вход</button>
+    <p id="allert-enter"></p>
+  <!-- </form> -->
+</div>
+
+</div>
+
+<script type="text/javascript">
+$('#button-enter-id').click(function(){
+  var id_user = document.getElementById('user').value;
+  var id_pass = document.getElementById('pass').value;
+
+  localStorage.setItem('user', id_user);
+  localStorage.setItem('pass', id_pass);
+  var user = localStorage.getItem('user');
+  var pass = localStorage.getItem('pass');
+
+  if ((user != null) && pass != null) {
+$.post('../php/checkLogin.php', {
+  user: user,
+  pass: pass
+}, function(data) {
+if (data = "true") {
+alert ('PHP PHP');
+} else {
+  localStorage.removeItem("user");
+  localStorage.removeItem("pass");
+  window.location.reload();
+  //alert('TRUE!!!!!');
+}});
+alert ('TRUEE!!!');
+  }
+  else {
+alert ('Fuck!');
+  }
+});
+
+</script>
+
+</body>
+</html>
