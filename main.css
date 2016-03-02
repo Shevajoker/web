@@ -1,13 +1,14 @@
 body{
   margin: 0;
+  font-family: 'Jura', sans-serif;
 }
 #wrapper {
 margin: auto;
 margin-top: 0;
-min-height: 600px;
+/*min-height: 600px;*/
 width: 1000px;
 border: grey solid 1px;
-
+/*display: contents;*/
 }
 
 h1 {
@@ -51,7 +52,7 @@ float: left;
 /*display: inline-block;*/
 }
 
-/*MENU START*/
+/*MENU BEGIN*/
 
 #horizontal-menu>ul {
     list-style-type: none;
@@ -88,7 +89,7 @@ float: left;
   padding: 0;
   overflow: hidden;
   background-color: #094B06;
-  padding-left: 15px;
+  /*padding-left: 15px;*/
   /*width: 150px;*/
 }
 
@@ -115,7 +116,7 @@ li a:hover {
 
 /*MENU END*/
 
-/*SLIDER START*/
+/*SLIDER BEGIN*/
 #slider-wrap{ /* Оболочка слайдера и кнопок */
     width:660px;
     margin-left: 100px;
@@ -166,4 +167,48 @@ li a:hover {
     background:url(arrowBg.png) right center no-repeat;}
 #prewbutton:hover, #nextbutton:hover{
     opacity:1;}
+
+
 /*SLIDER END*/
+
+
+/*PRODUCT_MINI BEGIN*/
+
+.product-mini {
+  width: 250px;
+  /*height: 350px;*/
+  border: 1px solid grey;
+  font-family: 'Jura', sans-serif;
+  float: left;
+  margin-left: 5px;
+  box-shadow: 0 0 10px grey;
+  
+}
+
+.mini-img img {
+  width: 200px;
+  height: 200px;
+}
+.mini-img {
+  margin-left: 25px;
+}
+
+.mini-id {
+  margin: 0;
+  padding: 0;
+}
+.mini-name {
+  padding: 0px;
+  margin: 0px;
+  width: 248px;
+  height: 70px;
+  /*border: 1px solid grey;*/
+}
+
+.mini-price {
+  margin-left: 15px;
+  color: red;
+  visibility: hidden;
+}
+
+/*PRODUCT_MINI END*/
