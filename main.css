@@ -80,7 +80,7 @@ float: left;
 #left-menu {
   margin-top: 30px;
   width: 150px;
-  float: left;
+  /*float: left;*/
 }
 
 #left-menu>ul {
