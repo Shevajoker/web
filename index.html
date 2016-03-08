@@ -27,7 +27,7 @@
               <input type="text" name="search" placeholder="Поиск">
               <input type="button" name="go" value="Поиск">
               <p id="enter-user">
-                <a href="html/enter.html">Вход</a>
+                <a href="#" id="btn-enter">Вход</a>
                 /
                 <a href="#">Регистрация</a>
               </p>
@@ -75,29 +75,88 @@
       <div id="left-menu">
         <ul>
           <li class="left-menu-point" value="1">
-            <a href="../php/collection.php?point=1">Point_1</a>
+            <a href="../php/collection.php?point=1">ALESIA</a>
           </li>
           <li class="left-menu-point" value="2">
-            <a href="#/2" >Point_2</a>
+            <a href="#/2" >SITY</a>
           </li>
           <li class="left-menu-point" value="3">
-            <a href="#" >Point_3</a>
+            <a href="#" >DENVER</a>
           </li>
           <li class="left-menu-point" value="4">
-            <a href="#" >Point_4</a>
+            <a href="#" >DIESEL</a>
           </li>
           <li class="left-menu-point" value="5">
-            <a href="#">Point_5</a>
+            <a href="#">DUNA (дуб сонома)</a>
           </li>
           <li class="left-menu-point" value="6">
-            <a href="#">Point_6</a>
+            <a href="#">DUNA (орех миланский)</a>
           </li>
           <li class="left-menu-point" value="7">
-            <a href="#">Point_7</a>
+            <a href="#">KENIA</a>
           </li>
           <li class="left-menu-point" value="8">
-            <a href="#">Point_8</a>
+            <a href="#">KOMFORT</a>
           </li>
+          <li class="left-menu-point" value="9">
+            <a href="#">LIGHT (дуб серый)</a>
+          </li>
+          <li class="left-menu-point" value="10">
+            <a href="#">LIGHT (орех верджиния)</a>
+          </li>
+          <li class="left-menu-point" value="11">
+            <a href="#">LINATE</a>
+          </li>
+          <li class="left-menu-point" value="12">
+            <a href="#">MAGELAN</a>
+          </li>
+          <li class="left-menu-point" value="13">
+            <a href="#">MILAN</a>
+          </li>
+          <li class="left-menu-point" value="14">
+            <a href="#">MONAKO</a>
+          </li>
+          <li class="left-menu-point" value="15">
+            <a href="#">MONTE</a>
+          </li>
+          <li class="left-menu-point" value="16">
+            <a href="#">OLIVIA</a>
+          </li>
+          <li class="left-menu-point" value="17">
+            <a href="#">OSKAR</a>
+          </li>
+          <li class="left-menu-point" value="18">
+            <a href="#">OSTIN</a>
+          </li>
+          <li class="left-menu-point" value="19">
+            <a href="#">PORTO (орех эко)</a>
+          </li>
+          <li class="left-menu-point" value="20">
+            <a href="#">PORTO (сосна Лоредо)</a>
+          </li>
+          <li class="left-menu-point" value="21">
+            <a href="#">PROVANS</a>
+          </li>
+          <li class="left-menu-point" value="22">
+            <a href="#">ROMEO I JULIA</a>
+          </li>
+          <li class="left-menu-point" value="23">
+            <a href="#">RONDO</a>
+          </li>
+          <li class="left-menu-point" value="24">
+            <a href="#">TIFFANI (Вудлайн)</a>
+          </li>
+          <li class="left-menu-point" value="25">
+            <a href="#">TIFFANI (Каштан)</a>
+          </li>
+          <li class="left-menu-point" value="26">
+            <a href="#">VERONA</a>
+          </li>
+          <li class="left-menu-point" value="27">
+            <a href="#">WIENA</a>
+          </li>
+
+
           <!-- <a href="#" class="left-menu-point" value = "99999">
           <li>Point_9</li>
         </a>
@@ -138,6 +197,28 @@
 
 </div>
 
+
+<!-- ОКНО ВХОДА -->
+<div id="enter-window">
+  <div class="ew-text">
+    <p><b>ВХОД</b></p>
+    <input type="text" id="user" placeholder="Логин"> <br>
+    <input type="password" id="pass" placeholder="Пароль"> <br>
+    <button type="button" id="button-enter-id" name="button-enter">Вход</button>
+    <button class="close" title="Закрыть" onclick="document.getElementById('enter-window').style.display='none';"></button>
+  </div>
+</div>
+<!-- ____________________ -->
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
   $(document).ready(function(){
     var user = localStorage.getItem('user');
@@ -177,10 +258,8 @@ if (user) {
    $(".mini-price").css("visibility", "visible");
      
     }
-$("#head-col").html(data[0].collection_ID);
+$("#head-col").html(data[0].collection_name);
             });
-
-// console.log(Mustache.to_html(template, data));
 
                 }
             });
@@ -189,21 +268,6 @@ $("#head-col").html(data[0].collection_ID);
   ///////
 });
 </script>
-
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-  var user = localStorage.getItem('user');
-  var pass = localStorage.getItem('pass');
-
-  if ((user != null) && pass != null) {
-
-  }
-  else {
-
-  }
-});
-</script>
--->
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -214,7 +278,52 @@ $(document).ready(function(){
      
     }
   });
+</script>
 
+
+<script type="text/javascript">
+$("#btn-enter").click(function(){
+  setTimeout("document.getElementById('enter-window').style.display='block'", 100);
+});  
+
+$('#button-enter-id').click(function(){
+  var id_user = document.getElementById('user').value;
+  var id_pass = document.getElementById('pass').value;
+
+  localStorage.setItem('user', id_user);
+  localStorage.setItem('pass', id_pass);
+  var user = localStorage.getItem('user');
+  var pass = localStorage.getItem('pass');
+
+  if ((user != '') && pass != '') {
+$.post('../php/checkLogin.php', {
+  user: user,
+  pass: pass
+}, function(data) {
+if (data == "true") {
+alert (data);
+} else {
+  localStorage.removeItem("user");
+  localStorage.removeItem("pass");
+  window.location.reload();
+  alert('Не верный Логин или Пароль!');
+}});
+  }
+  else {
+alert ('Заполните Логин и Пароль!');
+  }
+});
+
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  var user = localStorage.getItem('user');
+    if (user) {
+      $('#enter-user').html(user);
+      alert ('Hello!');
+    }
+  });
 </script>
 </body>
 </html>
