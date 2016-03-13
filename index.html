@@ -29,7 +29,7 @@
               <p id="enter-user">
                 <a href="#" id="btn-enter">Вход</a>
                 /
-                <a href="#">Регистрация</a>
+                <a href="#" id="btn-reg">Регистрация</a>
               </p>
             </form>
           </div>
@@ -72,10 +72,10 @@
         </ul>
       </div>
 
-      <div id="left-menu">
+    <!--   <div id="left-menu">
         <ul>
           <li class="left-menu-point" value="1">
-            <a href="../php/collection.php?point=1">ALESIA</a>
+            <a href="../php/start_collection.php?point=1">ALESIA</a>
           </li>
           <li class="left-menu-point" value="2">
             <a href="#/2" >SITY</a>
@@ -86,14 +86,11 @@
           <li class="left-menu-point" value="4">
             <a href="#" >DIESEL</a>
           </li>
-
-
         <a href="#" class="left-menu-point" value = "99999">
           <li>Point_9</li>
         </a>
-      
      </ul>
-    </div>
+    </div> -->
 
   </div>
 
@@ -102,23 +99,20 @@
       <div id="slider-wrap">
         <div id="slider">
           <div class="slide">
-            <img src="img/slider/001.jpg" width="640" height="360"></div>
+            <img src="img/slider/001.jpg" width="940" height="460"></div>
           <div class="slide">
-            <img src="img/slider/002.jpg" width="640" height="360"></div>
+            <img src="img/slider/002.jpg" width="940" height="460"></div>
           <div class="slide">
-            <img src="img/slider/003.jpg" width="640" height="360"></div>
+            <img src="img/slider/003.jpg" width="940" height="460"></div>
           <div class="slide">
-            <img src="img/slider/004.jpg" width="640" height="360"></div>
+            <img src="img/slider/004.jpg" width="940" height="460"></div>
           <div class="slide">
-            <img src="img/slider/005.jpg" width="640" height="360"></div>
+            <img src="img/slider/005.jpg" width="940" height="460"></div>
         </div>
       </div>
     </div>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-
-    <h1 id = "head-col">ANREX</h1>
+    
+    <h1 id = "head-col" style="text-align: center;">ANREX</h1>
     <div id="coll"></div>
   </content>
 
@@ -141,6 +135,18 @@
 </div>
 <!-- ____________________ -->
 
+<!-- ОКНО РЕГИСТРАЦИИ -->
+<div id="regis-window">
+  <div class="ew-text">
+    <p><b>РЕГИСТРАЦИЯ</b></p>
+    <input type="text" id="reg-user" placeholder="Логин"> <br>
+    <input type="password" id="reg-pas1" placeholder="Пароль"> <br>
+    <input type="password" id="reg-pas2" placeholder="Повторите пароль">
+    <button type="button" id="button-reg-id" name="button-enter">Зарегистрироваться</button>
+    <button class="close" title="Закрыть" onclick="document.getElementById('regis-window').style.display='none';"></button>
+  </div>
+</div>
+<!-- ____________________ -->
 
 
 
@@ -148,9 +154,7 @@
 
 
 
-
-
-<script type="text/javascript">
+<script type="text/javascript">      // раскрытие коллекции
   $(document).ready(function(){
     var user = localStorage.getItem('user');
       $(function (){
@@ -198,7 +202,51 @@ $("#head-col").html(data[0].collection_name);
     });
   ///////
 });
+</script> 
+<!-- раскрытие коллекции -->
+
+
+<script type="text/javascript"> //Старт меню
+  $(document).ready(function(){
+    $(function(){
+      // alert ("sdfsdfsdf");
+            $.ajax({
+            dataType: "json",
+            url: "../php/start_collection.php",
+            data: {},
+            success:
+            function(data){
+          console.log(data);
+
+              $("#coll").load("views/template/product_mini.html #template2",function(){
+                var template = document.getElementById('template2').innerHTML;
+                var output = '';
+            for (var i = 0; i < data.length; i++)
+            {
+              output = output + Mustache.to_html(template, data[i]);
+              console.log(template);
+              console.log(output);
+            }
+              $("#coll").html(output);
+             
+            });
+            }
+          });
+    });
+
+
+
+
+
+  });
 </script>
+
+
+
+
+
+
+
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -212,9 +260,13 @@ $("#head-col").html(data[0].collection_name);
 </script>
 
 
-<script type="text/javascript">
+<script type="text/javascript">  // проверка логина и пароля
 $("#btn-enter").click(function(){
   setTimeout("document.getElementById('enter-window').style.display='block'", 100);
+});
+
+$("#btn-reg").click(function(){
+  setTimeout("document.getElementById('regis-window').style.display='block'", 100);
 });  
 
 $('#button-enter-id').click(function(){
@@ -245,6 +297,32 @@ alert ('Заполните Логин и Пароль!');
   }
 });
 
+
+// РЕГИСТРАЦИЯ
+$('#button-reg-id').click(function(){
+  var id_user = document.getElementById('reg-user').value;
+  var id_pass1 = document.getElementById('reg-pas1').value;
+  var id_pass2 = document.getElementById('reg-pas2').value;
+// alert (id_user + "||" + id_pass1 + "||" + id_pass2);
+if (id_user && id_pass1 && id_pass2){
+  if (id_pass1.length > 5){
+    if (id_pass1 === id_pass2) {
+      $.post('../php/regis.php', {
+          user: id_user,
+          pass: id_pass1
+        },function(data){
+          if (data){
+            alert ("Регистрация прошла успешно!");
+          } else alert ("Клиент с таким логином уже существует!");
+        }
+      );
+    } else alert ("Пароли не совпадают!");
+  }else alert ("Пароло должен превышать 5 символов!");
+}else alert ("Для регистрации все поля должны быть заполнены!");
+
+});
+
+
 </script>
 
 <script type="text/javascript">
@@ -252,7 +330,7 @@ alert ('Заполните Логин и Пароль!');
   var user = localStorage.getItem('user');
     if (user) {
       $('#enter-user').html(user);
-      alert ('Hello!');
+      // alert ('Hello!');
     }
   });
 </script>
