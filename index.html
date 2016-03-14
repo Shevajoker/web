@@ -311,7 +311,7 @@ if (id_user && id_pass1 && id_pass2){
           user: id_user,
           pass: id_pass1
         },function(data){
-          if (data){
+          if (data == "false"){
             alert ("Регистрация прошла успешно!");
           } else alert ("Клиент с таким логином уже существует!");
         }
