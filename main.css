@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body{
   margin: 0;
   font-family: 'Jura', sans-serif;
@@ -60,10 +65,12 @@ display: grid;
     overflow: hidden;
     background-color: #094B06;
     padding-left: 15px;
+    /*border-radius: 5px;*/
 }
 
 #horizontal-menu li {
     float: left;
+
 }
 
 #horizontal-menu li a {
@@ -72,6 +79,7 @@ display: grid;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    border-radius: 5px;
     /*border-right: 1px solid grey;*/
   /*border-right-style: solid; */
 }
@@ -82,55 +90,49 @@ li a:hover {
 }
 
 .start-menu {
-  width: 310px;
-  height: 300px;
+  width: 300px;
+  height: 200px;
   float: left;
   border: 1px solid grey;
   margin: 10px;
   text-align: center;
-  background-image: url("../img/start.jpg");
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  cursor: pointer;
+  /*background-image: url("../img/collection/tiffany.png");*/
 }
 .start-menu:hover {
 font-weight: 100;
 color: red;
 }
+.start-menu:hover .start-name {
+opacity: 1;
+}
 .start-name {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   font-size: 25px;
   font-weight: 800;
+  background: #094B06;
+  opacity: 0.5;
 }
 
 
-
-/*#left-menu {
-  margin-top: 30px;
-  width: 150px;
+#search-text {
+  width: 250px;
+  margin:10px 20px 10px 50px;
+  padding: 3px;
+  border-radius: 3px;
+  border: none;
 }
-
-#left-menu>ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #094B06;
+#search-btn {
+  width: 100px;
+  height: 20px;
+  background-image: url("..//img/search.jpg");
+  border: none;
+  font-family: 'Jura', sans-serif;
 }
-
-#left-menu li a {
-    display:inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 0px;
-    text-decoration: none;
-    width: 150px;
-}
-#left-menu li {
-  width: 150px;
-}*/
-
-
-
-
+ 
 /*MENU END*/
 
 /*SLIDER BEGIN*/
