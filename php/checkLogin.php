@@ -3,14 +3,15 @@
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 
-$link = mysql_connect('localhost', 'root');
- if (!$link) {
-     die('Ошибка соединения: ' . mysql_error());
- }
- mysql_select_db('anrex') or die('Не удалось выбрать базу данных');
-  $query = 'SELECT * FROM users WHERE name_users = "'.$user.'"';
-  $result = mysql_query($query) or die('Запрос не удался: ' . mysql_error());
-$row = mysql_fetch_array($result);
+
+$mysqli = new mysqli("localhost", "madpotat_root", "Qw78As45Zx12", "madpotat_anrex");
+if ($mysqli->connect_errno) {
+    echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+
+ $mysqli->real_query('SELECT * FROM users WHERE name_users = "'.$user.'"');
+ $res = $mysqli->use_result();
+ $row = $res->fetch_assoc();
 
 $user_sql = $row['name_users'];
 $pass_sql = $row['pass_users'];
@@ -22,11 +23,6 @@ if($user == $user_sql && $pass == $pass_sql)
 else {
   echo 'false';
 }
-
-
- // Освобождаем память от результата
- mysql_free_result($result);
- mysql_close($link);
 
 
  ?>

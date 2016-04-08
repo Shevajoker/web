@@ -44,7 +44,7 @@
             <a href="#">Главная</a>
           </li>
           <li class="left-point-menu">
-            <a href="#">Новости</a>
+            <a href="../php/start_collection.php">Новости</a>
           </li>
           <li class="left-point-menu">
             <a href="#">Контакты</a>
@@ -109,16 +109,12 @@
             <img src="img/slider/002.jpg" width="940" height="460"></div>
           <div class="slide">
             <img src="img/slider/003.jpg" width="940" height="460"></div>
-          <div class="slide">
-            <img src="img/slider/004.jpg" width="940" height="460"></div>
-          <div class="slide">
-            <img src="img/slider/005.jpg" width="940" height="460"></div>
         </div>
       </div>
     </div>
     
     <h1 id = "head-col" style="text-align: center; ">ANREX</h1>
-    <div id="coll" style="margin: auto;padding-left: 30px; display: inline-block; "></div>
+    <div id="coll" style="margin: auto;padding-left: 30px; display: inline-block; margin-bottom: 50px;"></div>
   </content>
 <br>
   <p>
@@ -256,10 +252,6 @@
           });
     });
 
-
-
-
-
   });
 </script>
 
@@ -297,7 +289,7 @@ if (data == "true") {
 // alert ("Вы успешно зашли под своим аккаутном!");
 // $('.close').click();
 $('.ew-info').html("<p><h2>ВЫ УСПЕШНО ЗАШЛИ!</h2></p>");
-$('#enter-user').html(user + "<p><button id='user-del'>Выход</button></p>");
+$('#enter-user').html(user + " <p><a href='../html/my_office.html'>Вход в кабинет</a></p> <p><button id='user-del'>Выход</button></p> ");
 } else {
   localStorage.removeItem("user");
   localStorage.removeItem("pass");
@@ -342,7 +334,7 @@ if (id_user && id_pass1 && id_pass2){
   $(document).ready(function() {
   var user = localStorage.getItem('user');
     if (user) {
-      $('#enter-user').html(user + "<p><button id='user-del'>Выход</button></p>");
+      $('#enter-user').html(user + "<p><a href='../html/my_office.html'>Вход в кабинет</a></p>  <p><button id='user-del'>Выход</button></p>");
     }
 
     $('#user-del').click(function(){
@@ -351,22 +343,45 @@ if (id_user && id_pass1 && id_pass2){
     });
  
 });
+</script>
 
-// ПОКАЗАТЬ КОЛЛЕКЦИЮ BEGIN
-$('.start-menu').click(function(){
-    alert ("111111111111111111111");
-});
-var click = document.querySelector('.coll'); 
-click.addEventListener('click',func,false); 
-function func(e){ 
-if(!e.target.id){ 
-return 0; 
-} else { 
-console.log(e.target.id); 
-} 
+<script type="text/javascript">
+  // ПОКАЗАТЬ КОЛЛЕКЦИЮ BEGIN
+function showCollection(id){
+   $('#coll').html("");
+
+  $.ajax({
+                dataType: "json",
+                url: "../php/collection.php",
+                data: {point: id},
+                success:
+                function(data){
+
+            $("#coll").load("views/template/product_mini.html #template1",function(){
+
+            var template = document.getElementById('template1').innerHTML;
+            var output = '';
+for (var i = 0; i < data.length; i++)
+{
+            output = output + Mustache.to_html(template, data[i]);
+            // console.log(template);
+            console.log(output);
+}
+$("#coll").html(output);
+if (user!='') {
+   $(".mini-price").css("visibility", "visible");
+     
+    }
+$("#head-col").html(data[0].collection_name);
+            });
+
+                }
+            });
+
+
 }
 // ПОКАЗАТЬ КОЛЛЕКЦИЮ END
- 
 </script>
+
 </body>
 </html>

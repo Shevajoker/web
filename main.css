@@ -209,12 +209,15 @@ opacity: 1;
   margin-left: 5px;
   margin-top: 15px;
   box-shadow: 0 0 10px grey;
+  background: white;
   
 }
 
 .mini-img img {
   width: 245px;
   height: 245px;
+  background-size: cover;
+
 }
 .mini-img {
   margin-left: 2px;
@@ -223,17 +226,23 @@ opacity: 1;
 .mini-id {
   margin: 0;
   padding: 0;
+  margin-left: 5px;
+
 }
 .mini-name {
   padding: 0px;
   margin: 0px;
   width: 248px;
   height: 70px;
+  margin-left: 5px;
+
   /*border: 1px solid grey;*/
 }
 
 .mini-price {
   margin-left: 15px;
+  margin-bottom: 15px;
+  margin-top: 15px;
   color: red;
   visibility: hidden;
 }
@@ -376,3 +385,48 @@ footer {
 }
 /*FOOTER END*/
 
+
+/*USER OFFICE begin*/
+.main-menu {
+    width: 180px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 100px;
+    float: left;
+}
+
+.main-menu a {
+    display: block;
+    margin-bottom: -1px;
+    padding: 8px 14px;
+    color: #0088CC;
+    text-decoration: none;
+    border: 1px solid #E5E5E5;
+}
+
+.main-menu a:hover {
+    background: #F5F5F5;
+}
+
+/*USER OFFICE end*/
+
+
+/*TEMPLATE_PERSONAL_INFO begin*/
+#info {
+  margin: 50px 0 50px 10px;
+}
+
+.personal-info {
+  display: inline-block;
+  width: 200px;
+  margin: 10px 20px 5px 15px;
+  /*border: 1px solid red;*/
+}
+
+.info-btn {
+  width: 100px;
+  height: 30px;
+  margin: 50px 0 10px 40%;
+}
+/*TEMPLATE_PERSONAL_INFO begin*/
