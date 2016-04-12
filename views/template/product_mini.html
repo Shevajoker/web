@@ -1,0 +1,46 @@
+<div id="template1" >
+	<div class="product-mini">
+		<p class="mini-id">id: {{product_ID}}</p>
+		<div class="mini-name">
+			<h2>{{product_name}}</h2>
+		</div>
+		<p class="mini-img">
+			<img src="{{product_img}}" alt="NO PHOTO!"/>
+		</p>
+		<p class="mini-info" style="height: 50px;">{{product_info}}</p>
+		<p class="mini-price">{{product_price}} <input type="text" name="zakazat-kol" placeholder="0" style="width: 50px; margin-left: 15px"> <input type="button" name="zakazat" value="Заказать"> </p>
+	</div>
+</div>
+
+
+<div id="template2">
+	<div class="start-menu" id="{{collection_ID}}" style="background-image: url('{{collection_img}}'); background-size: contain; " onclick="showCollection(this.id)">
+		<p class="start-name">{{collection_name}}</p>
+	</div>
+</div>
+
+<div id="template_personal_info">
+	<div id="info">
+		<p>
+		<label for="name" class="personal-info">Название фирмы</label>
+		<input type="text" id="name" value="{{users_info_nazva}}">
+		</p>
+		<p>
+		<label for="addres" class="personal-info">Адрес</label>
+		<input type="text" id="addres" value="{{users_info_addres}}">
+		</p>
+		<p>
+		<label for="phon" class="personal-info">Телефон</label>
+		<input type="text" id="phon" value="{{users_info_phon}}">
+		</p>
+		<p>
+		<label for="person" class="personal-info">Контактное лицо</label>
+		<input type="text" id="person" value="{{users_info_contact_face}}">
+		</p>
+
+		<button class="info-btn" onclick="saveInfo()">Сохранить</button>
+
+		<!-- <p>{{ID_users}}</p>{{users_info_nazva}} -->
+		<!-- <button class="info-btn">Отмена</button> -->
+	</div>
+</div>

@@ -285,14 +285,17 @@ $.post('../php/checkLogin.php', {
   user: user,
   pass: pass
 }, function(data) {
-if (data == "true") {
-// alert ("Вы успешно зашли под своим аккаутном!");
+if (data != "false") {
+// alert ("Вы успешно зашли под своим аккаутном!" + data);
 // $('.close').click();
 $('.ew-info').html("<p><h2>ВЫ УСПЕШНО ЗАШЛИ!</h2></p>");
+localStorage.setItem('user_id', data);
 $('#enter-user').html(user + " <p><a href='../html/my_office.html'>Вход в кабинет</a></p> <p><button id='user-del'>Выход</button></p> ");
 } else {
   localStorage.removeItem("user");
   localStorage.removeItem("pass");
+  localStorage.removeItem("user_id");
+
   window.location.reload();
   alert('Не верный Логин или Пароль!');
 }});
@@ -318,7 +321,7 @@ if (id_user && id_pass1 && id_pass2){
         },function(data){
           if (data == "false"){
             alert ("Регистрация прошла успешно!");
-          } else alert ("Клиент с таким логином уже существует!");
+          } else alert ("Клиент с таким логином уже существует!"); 
         }
       );
     } else alert ("Пароли не совпадают!");
@@ -340,6 +343,8 @@ if (id_user && id_pass1 && id_pass2){
     $('#user-del').click(function(){
       localStorage.removeItem('user');
       localStorage.removeItem('pass');
+      localStorage.removeItem('user_id');
+
     });
  
 });

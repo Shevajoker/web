@@ -18,7 +18,7 @@ $pass_sql = $row['pass_users'];
 
 if($user == $user_sql && $pass == $pass_sql)
 {
-  echo 'true';
+  echo $row["ID_users"];
 }
 else {
   echo 'false';

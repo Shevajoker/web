@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anrex, мебель Брест, корпусная мебель.</title>
+  <link rel="stylesheet" type="text/css" href="../main.css">
+  <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+-->
+<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
+<!-- <script src="js/slider.js" charset="utf-8"></script> -->
+<script src="../mustache/mustache.js" type="text/javascript"></script>
+<link href='https://fonts.googleapis.com/css?family=Jura&subset=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'></head>
+<body>
+<div id="wrapper">
+  <header>
+    <div id="up-head"></div>
+    <div id="header">
+      <div class="up-logo">
+        <div class="img-logo">
+          <a href="../index.html">
+            <img src="../img/logo/logo.jpg" alt="logo"></a>
+        </div>
+        <div class="lozung">
+          <h1>МЕБЕЛЬ ВЫГОДНО!</h1>
+        </div>
+        <div class="class-search">
+          <form class="up-search" action="#" method="post">
+            <!--  <input type="text" name="search" placeholder="Поиск">
+            <input type="button" name="go" value="Поиск">
+            -->
+            <p id="enter-user">
+              <a href="#" id="btn-enter">Вход</a>
+              /
+              <a href="#" id="btn-reg">Регистрация</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="sidebar">
+    <div id="horizontal-menu">
+      <ul>
+        <li class="left-point-menu">
+          <a href="#">Главная</a>
+        </li>
+        <li class="left-point-menu">
+          <a href="../php/start_collection.php">Новости</a>
+        </li>
+        <li class="left-point-menu">
+          <a href="#">Контакты</a>
+        </li>
+        <li class="left-point-menu">
+          <a href="#">Где купить?</a>
+        </li>
+        <li class="left-point-menu">
+          <a href="#">Вакансии</a>
+        </li>
+        <!-- <li class="left-point-menu">
+        <a href="#">Point6</a>
+      </li>
+      <li class="left-point-menu">
+        <a href="#">Point7</a>
+      </li>
+      <li class="left-point-menu">
+        <a href="#">Point8</a>
+      </li>
+      <li class="left-point-menu">
+        <a href="#">Point9</a>
+      </li>
+      <li class="left-point-menu">
+        <a href="#">Point10</a>
+      </li>
+      -->
+      <input type="text" id="search-text" placeholder="Поиск...">
+      <button id="search-btn">поиск</button>
+    </ul>
+
+  </div>
+
+  <div id="left-menu">
+    <ul class="main-menu">
+      <li class="left-menu-point" value="1">
+        <a href="#" onclick="getInfo()">ЛИЧНЫЕ ДАННЫЕ</a>
+      </li>
+      <li class="left-menu-point" value="1">
+        <a href="../php/personal_info.php" >НОВОСТИ</a>
+      </li>
+      <li class="left-menu-point" value="2" >
+        <a href="#/2" >НОВЫЙ ЗАКАЗ</a>
+      </li>
+      <li class="left-menu-point" value="3">
+        <a href="#" onclick="">МОИ ЗАКАЗЫ</a>
+      </li>
+      <!--  <li class="left-menu-point" value="4">
+      <a href="#" >DIESEL</a>
+    </li>
+    <a href="#" class="left-menu-point" value = "99999">
+      <li>Point_9</li>
+    </a>
+    -->
+  </ul>
+</div>
+
+</div>
+
+<content select="#" style="width: 800px; min-height: 500px; margin-top: 60px; border: 1px solid grey; display: inline-block;">
+<h1 id = "head-col" style="text-align: center; height: 30px; width: 800px; border: 1px solid red;">ДОБРО ПОЖАЛОВАТЬ!</h1>
+<div id="coll"></div>
+
+<!-- <div id="coll" style="margin: auto;padding-left: 30px; display: inline-block; margin-bottom: 50px;"></div>
+-->
+</content>
+
+</div>
+
+<footer>
+<div id="f1">
+<div class="img-logo">
+<a href="../index.html">
+  <img src="../img/logo/logo.jpg" alt="logo"></a>
+</div>
+<p>
+<a href="">MONTE</a>
+</p>
+<p>
+<a href="">MILAN</a>
+</p>
+<p>
+<a href="">LIGHT</a>
+</p>
+<p>
+<a href="">PORTO</a>
+</p>
+<p>
+<a href="">MAGELLAN</a>
+</p>
+<p>
+<a href="">ROMEO I JULIA</a>
+</p>
+</div>
+<div id="f2">
+<h2>e-mail: info@anrex.by</h2>
+</div>
+<div id="f3">
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2448.300798419962!2d23.6757301!3d52.1470392!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472109a935b76a75%3A0xaa83eaf89d2d015e!2z0JjQntCe0J4gItCQ0J3QoNCt0JrQoSLQmNC90L7RgdGC0YDQsNC90L3QvtC1INC-0LHRidC10YHRgtCy0L4g0YEg0L7Qs9GA0LDQvdC40YfQtdC90L3QvtC5INC-0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjNGOIMKr0JDQndCg0K3QmtChwrs!5e0!3m2!1sru!2sru!4v1458721915220" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+</footer>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  var user = localStorage.getItem('user');
+    if (user) {
+      $('#enter-user').html(user + "<p><button id='user-del'><a href='../index.html'>Выход</a></button></p>");
+    }
+$('#user-del').click(function(){
+  // window.location.href'../index.html';
+      localStorage.removeItem('user');
+      localStorage.removeItem('pass');
+      localStorage.removeItem('user_id');
+
+      });
+});
+</script>
+
+<script type="text/javascript"> //Старт меню
+  // $(document).ready(function(){
+    function getInfo(){
+    $('#coll').html("");  
+    var user = localStorage.getItem('user'); 
+    var user_id = localStorage.getItem('user_id'); 
+     // alert (user_id);  
+          $.ajax({
+            dataType: "json",
+            url: "../php/personal_info.php",
+            data: {user: user,
+                  user_id: user_id},
+            success:
+          function(data){
+            console.log(data);
+            $("#coll").load("../views/template/product_mini.html #template_personal_info",function(){
+            var template = document.getElementById('template_personal_info').innerHTML;
+            var output = '';
+            output = output + Mustache.to_html(template, data[0]);
+            $("#coll").html(output);
+             // localStorage.setItem('user_id', data['ID_users']);
+            });
+            // alert (data);
+          }
+          });
+    }
+
+function saveInfo(){
+  var user_id = localStorage.getItem('user_id');
+
+  var name = document.getElementById('name').value;
+  var addres = document.getElementById('addres').value;
+  var phon = document.getElementById('phon').value;
+  var person = document.getElementById('person').value;
+  // alert (user_id);
+  // alert (user_id +|||+ name +'||'+ addres +'||'+ phon +'||'+ person );
+
+  $.ajax({
+    dataType: "json",
+    url: "../php/saveInfo.php",
+    data: {
+          user_id: user_id,
+          name: name,
+          addres: addres,
+          phon: phon,
+          person: person
+          },
+    success:
+    function(data){
+alert (data);
+    }
+
+  });
+
+}
+
+  // });
+</script>
+
+</body>
+</html>
