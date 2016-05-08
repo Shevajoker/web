@@ -43,9 +43,9 @@
           <li class="left-point-menu">
             <a href="#">Главная</a>
           </li>
-          <li class="left-point-menu">
-            <a href="../php/start_collection.php">Новости</a>
-          </li>
+          <!-- <li class="left-point-menu">
+            <a href="#" onclick="getNews()">Новости</a>
+          </li> -->
           <li class="left-point-menu">
             <a href="#">Контакты</a>
           </li>
@@ -179,6 +179,7 @@
 
 
 <script type="text/javascript">      // раскрытие коллекции
+
 //   $(document).ready(function(){
 //     var user = localStorage.getItem('user');
 //       $(function (){
@@ -286,6 +287,9 @@ $.post('../php/checkLogin.php', {
   pass: pass
 }, function(data) {
 if (data != "false") {
+  if (data == "admin"){
+    document.location.href = "../html/adminka.html";
+  }
 // alert ("Вы успешно зашли под своим аккаутном!" + data);
 // $('.close').click();
 $('.ew-info').html("<p><h2>ВЫ УСПЕШНО ЗАШЛИ!</h2></p>");
@@ -298,6 +302,8 @@ $('#enter-user').html(user + " <p><a href='../html/my_office.html'>Вход в �
 
   window.location.reload();
   alert('Не верный Логин или Пароль!');
+
+
 }});
   }
   else {

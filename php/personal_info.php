@@ -12,7 +12,7 @@ $mysqli = new mysqli("localhost", "madpotat_root", "Qw78As45Zx12", "madpotat_anr
 if ($mysqli->connect_errno) {
     echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-
+$mysqli->real_query('SET NAMES utf8');
  $mysqli->real_query('SELECT users.*, users_info.* FROM users, users_info WHERE users.ID_users = users_info.ID_users  AND users.ID_users = "'.$user_id.'"');
  $res = $mysqli->use_result();
 

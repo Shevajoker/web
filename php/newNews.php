@@ -1,0 +1,42 @@
+<?php
+// header("Access-Control-Allow-Origin: *");
+// header('Content-Type:application/json');
+// header('Content-type:text/html; charset="utf-8"');
+
+
+$title = $_GET['newsTitle'];
+$text = $_GET['newsText'];
+
+// echo $_POST['newTitle'];
+
+// $data = '';
+
+$mysqli = new mysqli("localhost", "madpotat_root", "Qw78As45Zx12", "madpotat_anrex");
+if ($mysqli->connect_errno) {
+    echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+$mysqli->real_query('SET NAMES utf8');
+ $mysqli->real_query('INSERT INTO news (news_title, news_text) VALUES ("'.$title.'", "'.$text.'")');
+ $res = $mysqli->use_result();
+
+// $data = '[';
+// while ($row = $res->fetch_assoc()) {
+//   $data .= '{
+//     "ID_users":"'.$row["ID_users"].'",
+// 	"name_users":"'.$row["name_users"].'",
+//     "users_info_nazva":"'.$row["users_info_nazva"].'",
+//     "users_info_addres":"'.$row["users_info_addres"].'",
+//     "users_info_phon":"'.$row["users_info_phon"].'",
+//     "users_info_contact_face":"'.$row["users_info_contact_face"].'"
+//   },';
+// }
+
+// $res->free();
+$mysqli->close();
+
+//  $data .=']';
+// $data = chop($data,   ',]');
+// echo $data.']';
+
+echo "true";
+ ?>

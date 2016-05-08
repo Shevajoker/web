@@ -9,21 +9,28 @@ $mysqli = new mysqli("localhost", "madpotat_root", "Qw78As45Zx12", "madpotat_anr
 if ($mysqli->connect_errno) {
     echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-
 $mysqli->real_query('SET NAMES utf8');
- $mysqli->real_query('SELECT * FROM collection WHERE collection_vis = 1');
+ $mysqli->real_query('SELECT * FROM news ORDER BY news_date DESC LIMIT 5');
  $res = $mysqli->use_result();
 
- $data = '[';
+$data = '[';
 while ($row = $res->fetch_assoc()) {
   $data .= '{
-    "collection_ID":"'.$row["collection_ID"].'",
-    "collection_img":"'.$row["collection_img"].'",
-    "collection_name":"'.$row["collection_name"].'"
+    "news_title":"'.$row["news_title"].'",
+    "news_text":"'.$row["news_text"].'",
+    "news_date":"'.$row["news_date"].'"
   },';
 }
+
+$res->free();
+$mysqli->close();
+
  $data .=']';
 $data = chop($data,   ',]');
 echo $data.']';
+// echo $user_id;
+
+
+
 
  ?>

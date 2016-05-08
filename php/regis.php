@@ -8,7 +8,7 @@ $mysqli = new mysqli("localhost", "madpotat_root", "Qw78As45Zx12", "madpotat_anr
 if ($mysqli->connect_errno) {
     echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-
+$mysqli->real_query('SET NAMES utf8');
  $mysqli->real_query('SELECT * FROM users');
  $res = $mysqli->use_result();
 

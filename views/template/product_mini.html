@@ -44,3 +44,101 @@
 		<!-- <button class="info-btn">Отмена</button> -->
 	</div>
 </div>
+
+
+<div id="template_news">
+	<div class="class-news">
+		<h1>{{news_title}}</h1> <br>
+		<p>{{news_text}}</p> <br>
+		<p>{{news_date}}</p>
+		<hr>
+	</div>
+</div>
+
+<div id="template_getClients">
+	<div class="getClients_info" >
+		<div style="width: 30px;">{{ID_users}}</div>
+		<div style="width: 100px;">{{name_users}}</div>
+		<div style="width: 100px;">{{users_info_nazva}}</div>
+		<div style="width: 100px;">{{users_info_addres}}</div>
+		<div style="width: 200px;">{{users_info_phon}}</div>
+		<div style="width: 200px;">{{users_info_contact_face}}</div>
+	</div>
+	<br>
+</div>
+
+<div id="template_addProduct">
+	<div>
+	<label for="imgProduct">Фото</label><button>...</button>
+	<label for="numArticle">№ Артикула</label><input type="text" id="numArticle">
+	<label for="nameArticle">Название</label><input type="text" id="nameArticle">
+	<label for="infoArticle">Информация</label><input type="text" id="infoArticle">
+	<label for="priceArticle">Цена</label><input type="text" id="priceArticle">
+
+	<button>Добавить</button><button>Отмена</button>
+	</div>
+</div>
+
+<div id="template_newNews">
+	<div id="newNews_box">
+		<label for="news_title" id="news_title_id">Заголовок</label><input type="text" name="news_title_val" id="news_title"><br>
+		<textarea name="news_textarea_val" id="news_t_a" cols="90" rows="15"></textarea><br>
+		<button id="news_save_btn" onclick="saveNews()">Сохранить</button>
+		<h4 class="save_status"></h4>
+		<!-- <a href="../php/newNews.php" onclick="saveNews()">111111111111</a> -->
+	</div>
+		<style type="text/css">
+		#newNews_box{
+			margin-left: 30px;
+			margin-top: 50px;
+		}
+		#news_title {
+			margin-left: 30px;
+			margin-bottom: 30px;
+			width: 200px;
+			height: 20px;
+		}
+		#news_save_btn{
+		margin-top: 10px;
+		}
+
+
+		</style>
+</div>
+
+<div id="template_addArticle">
+	<div id="addArticle_box">
+	<h2 style="text-align: center;">Добавить Артикул</h2>
+	<form action="../php/saveArticle.php" method="post" enctype="multipart/form-data" style="margin-left: 20%;">
+              
+                <input type="file" name="filename"/>
+                <p>
+                    <label for="number_art">№ Артикула</label>
+                    <input type="text" name="number_art" id="num_art" value="">
+                </p>
+                <p>
+                    <label for="name_art">Название товара</label>
+                    <input type="text" name="name_art" id="art" value="">
+                </p>
+                
+                <p>
+                    <label for="pr">Цена</label>
+                    <input type="text" name="prise_art" id="pr_art" value="">
+                </p>
+                <p>
+                    <label for="inf_tov">Информация о товаре</label>
+                    <textarea name="info_art" id="inf_art" cols="30" rows="10" ></textarea>
+                </p>
+                <p><label for="id_spis_tov">Коллекция</label></p>
+                <select name="spis_coll" id="id_spis_coll">
+                <option value="1">MONTE</option>
+    			<option value="2">LIGHT</option>
+    			</select>
+                <p>
+                <input type="submit" value="Сохранить" id="save_art_btn"/>
+                </p>
+                   
+            </form>
+
+	</div>
+</div>

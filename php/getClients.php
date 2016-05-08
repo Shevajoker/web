@@ -9,21 +9,31 @@ $mysqli = new mysqli("localhost", "madpotat_root", "Qw78As45Zx12", "madpotat_anr
 if ($mysqli->connect_errno) {
     echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-
 $mysqli->real_query('SET NAMES utf8');
- $mysqli->real_query('SELECT * FROM collection WHERE collection_vis = 1');
+ $mysqli->real_query('SELECT * FROM users, users_info WHERE users.ID_users = users_info.ID_users');
  $res = $mysqli->use_result();
 
- $data = '[';
+$data = '[';
 while ($row = $res->fetch_assoc()) {
   $data .= '{
-    "collection_ID":"'.$row["collection_ID"].'",
-    "collection_img":"'.$row["collection_img"].'",
-    "collection_name":"'.$row["collection_name"].'"
+    "ID_users":"'.$row["ID_users"].'",
+	"name_users":"'.$row["name_users"].'",
+    "users_info_nazva":"'.$row["users_info_nazva"].'",
+    "users_info_addres":"'.$row["users_info_addres"].'",
+    "users_info_phon":"'.$row["users_info_phon"].'",
+    "users_info_contact_face":"'.$row["users_info_contact_face"].'"
   },';
 }
+
+$res->free();
+$mysqli->close();
+
  $data .=']';
 $data = chop($data,   ',]');
 echo $data.']';
+// echo $user_id;
+
+
+
 
  ?>

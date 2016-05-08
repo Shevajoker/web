@@ -430,3 +430,19 @@ footer {
   margin: 50px 0 10px 40%;
 }
 /*TEMPLATE_PERSONAL_INFO begin*/
+
+
+/*TEMPLATE_GETCLIENTS  degin*/
+.getClients_info{
+  min-height: 30px;
+  border:1px solid #000;
+}
+.getClients_info div{
+float: left;
+min-height: 30px;
+margin: 0px 3px 2px 3px;
+border-right: 1px solid #000;
+}
+
+
+/*TEMPLATE_GETCLIENTS end*/

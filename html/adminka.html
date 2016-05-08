@@ -54,7 +54,7 @@
           <a href="#">Где купить?</a>
         </li>
         <li class="left-point-menu">
-          <a href="../html/adminka.html">Вакансии</a>
+          <a href="#">Вакансии</a>
         </li>
         <!-- <li class="left-point-menu">
         <a href="#">Point6</a>
@@ -81,31 +81,34 @@
   <div id="left-menu">
     <ul class="main-menu">
       <li class="left-menu-point" value="1">
-        <a href="#" onclick="getInfo()">ЛИЧНЫЕ ДАННЫЕ</a>
+        <a href="#" onclick="getClients()">КЛИЕНТЫ</a>
       </li>
       <li class="left-menu-point" value="1">
         <a href="#" onclick="getNews()" >НОВОСТИ</a>
       </li>
       <li class="left-menu-point" value="2" >
+        <a href="#" onclick="newNews()" >НОВАЯ НОВОСТЬ</a>
+      </li>
+      <!-- <li class="left-menu-point" value="2" >
         <a href="../php/news.php" onclick="" >НОВЫЙ ЗАКАЗ</a>
       </li>
       <li class="left-menu-point" value="3">
         <a href="#" onclick="">МОИ ЗАКАЗЫ</a>
-      </li>
-      <!--  <li class="left-menu-point" value="4">
-      <a href="#" >DIESEL</a>
+      </li> -->
+       <li class="left-menu-point" value="4">
+      <a href="#" onclick="addArticle()" >Добавить Артикул</a>
     </li>
-    <a href="#" class="left-menu-point" value = "99999">
+    <!-- <a href="#" class="left-menu-point" value = "99999">
       <li>Point_9</li>
-    </a>
-    -->
+    </a> -->
+   
   </ul>
 </div>
 
 </div>
 
 <content select="#" style="width: 800px; min-height: 500px; margin-top: 60px; border: 1px solid grey; display: inline-block;">
-<h1 id = "head-col" style="text-align: center; height: 30px; width: 800px; border: 1px solid red;">ДОБРО ПОЖАЛОВАТЬ!</h1>
+<h1 id = "head-col" style="text-align: center; height: 30px; width: 800px; border: 1px solid red;">ДОБРО ПОЖАЛОВАТЬ ADMIN!</h1>
 <div id="coll"></div>
 
 <!-- <div id="coll" style="margin: auto;padding-left: 30px; display: inline-block; margin-bottom: 50px;"></div>
@@ -164,63 +167,6 @@ $('#user-del').click(function(){
 </script>
 
 <script type="text/javascript"> //Старт меню
-$(document).ready(function(){
-if (localStorage.getItem('user') == "adminanrex") {
-  document.location.href = "../html/adminka.html";
-}
-});
-
-
-
-    function getInfo(){
-    $('#coll').html("");  
-    var user = localStorage.getItem('user'); 
-    var user_id = localStorage.getItem('user_id'); 
-          $.ajax({
-            dataType: "json",
-            url: "../php/personal_info.php",
-            data: {user: user,
-                  user_id: user_id},
-            success:
-          function(data){
-            console.log(data);
-            $("#coll").load("../views/template/product_mini.html #template_personal_info",function(){
-            var template = document.getElementById('template_personal_info').innerHTML;
-            var output = '';
-            output = output + Mustache.to_html(template, data[0]);
-            $("#coll").html(output);
-            });
-          }
-          });
-    }
-
-function saveInfo(){
-  var user_id = localStorage.getItem('user_id');
-
-  var name = document.getElementById('name').value;
-  var addres = document.getElementById('addres').value;
-  var phon = document.getElementById('phon').value;
-  var person = document.getElementById('person').value;
-
-  $.ajax({
-    dataType: "json",
-    url: "../php/saveInfo.php",
-    data: {
-          user_id: user_id,
-          name: name,
-          addres: addres,
-          phon: phon,
-          person: person
-          },
-    success:
-    function(data){
-alert (data);
-    }
-  });
-}
-
-
-
 function getNews(){
   $('#coll').html("");
 $.ajax({
@@ -240,12 +186,90 @@ $.ajax({
               console.log(template);
               console.log(output);
             }
-              $("#coll").html(output);
-             
+              $("#coll").html(output);             
             });
             }
           });
+}
 
+
+function  getClients() {
+  $.ajax({
+            dataType: "json",
+            url: "../php/getClients.php",
+            data: {},
+            success:
+            function(data){
+          console.log(data);
+
+              $("#coll").load("../views/template/product_mini.html #template_getClients",function(){
+                var template = document.getElementById('template_getClients').innerHTML;
+                var output = '';
+            for (var i = 0; i < data.length; i++)
+            {
+              output = output + Mustache.to_html(template, data[i]);
+              console.log(template);
+              console.log(output);
+            }
+              $("#coll").html(output);             
+            });
+            }
+          });
+}
+
+
+function newNews(){
+  $('#coll').html("");
+
+$("#coll").load("../views/template/product_mini.html #template_newNews",function(){
+                var template = document.getElementById('template_newNews').innerHTML;
+                var output = '';
+              output = output + Mustache.to_html(template);
+              console.log(template);
+              console.log(output);
+            // }
+              $("#coll").html(output);             
+            });
+}
+
+function saveNews(){
+  var newsTitle = document.getElementById('news_title').value;
+  var newsText = document.getElementById('news_t_a').value;
+
+// $.post("../php/newNews.php", {newTitle: "1111111111", newText: "22222222222"});
+
+
+// console.log(newsText + "||" + newsTitle);
+
+   $.ajax({
+    dataType: "json",
+    url: "../php/newNews.php",
+    data: {
+      newsTitle: newsTitle,
+      newsText: newsText
+    },
+    success:
+    function(data){
+      console.log(data);
+      if (data == "true"){
+        $(".save_status").html("Сохранено!");
+      }
+    }
+  });
+
+}
+
+function addArticle(){
+  $('#coll').html(""); 
+  $("#coll").load("../views/template/product_mini.html #template_addArticle",function(){
+                var template = document.getElementById('template_addArticle').innerHTML;
+                var output = '';
+              output = output + Mustache.to_html(template);
+              console.log(template);
+              console.log(output);
+            // }
+              $("#coll").html(output);             
+            });
 }
 
  
